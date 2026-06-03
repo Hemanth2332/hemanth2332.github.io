@@ -596,6 +596,10 @@ body {
         display: flex;
     }
 
+    .main-content {
+        margin-top: 64px;
+    }
+
     .sidebar-close-inner {
         display: flex;
         position: absolute;
@@ -626,10 +630,19 @@ body {
         flex-direction: column-reverse;
         text-align: center;
         gap: 32px;
+        padding-top: 16px;
+    }
+
+    .hero-image-container {
+        margin-top: 18px;
     }
 
     .hero-name {
-        font-size: 2.75rem;
+        font-size: 2.4rem;
+        line-height: 1.05;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        margin: 12px auto 10px;
     }
 
     .hero-role {
