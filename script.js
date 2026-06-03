@@ -46,23 +46,24 @@ function getTrueScrollTop(element) {
 // Handle smooth navigation scrolling
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault(); // Bypass browser sticky anchor jump bugs
-        
-        const targetId = link.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            const scrollTarget = getTrueScrollTop(targetElement);
-            
-            window.scrollTo({
-                top: scrollTarget,
-                behavior: 'smooth'
-            });
+        const href = link.getAttribute('href');
+
+        if (href && href.startsWith('#')) {
+            e.preventDefault(); // Bypass browser sticky anchor jump bugs
+
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                const scrollTarget = getTrueScrollTop(targetElement);
+                window.scrollTo({
+                    top: scrollTarget,
+                    behavior: 'smooth'
+                });
+            }
+
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
         }
 
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        
         if (window.innerWidth <= 768) {
             closeSidebar();
         }
